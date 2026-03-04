@@ -1,0 +1,13 @@
+{
+  "safety_priority": "safety_priority",
+  "travel_type": "travel_type",
+  "with_children": "with_children",
+  "all_inclusive": "all_inclusive",
+  "budget": "budget",
+  "country": "country",
+  "pool": "pool",
+  "first_line": "first_line",
+  "climate": "climate",
+  "season": "season",
+  "wifi": "wifi"
+}

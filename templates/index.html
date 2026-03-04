@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tourism</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #1a1a2e;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            color: #6b7280;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 
+                0 4px 24px rgba(0, 0, 0, 0.04),
+                0 1px 2px rgba(0, 0, 0, 0.02),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #1a1a2e;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .free-text {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .free-text textarea {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #1a1a2e;
+            outline: none;
+            resize: vertical;
+            min-height: 80px;
+            transition: all 0.2s ease;
+        }
+
+        .free-text textarea:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .free-text-label {
+            font-size: 12px;
+            color: #8b5cf6;
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 15px;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 24px;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .results {
+            margin-top: 32px;
+        }
+
+        .results-header {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 16px;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .result-card:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(4px);
+        }
+
+        .result-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .result-country {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .result-price {
+            font-size: 16px;
+            font-weight: 600;
+            color: #10b981;
+        }
+
+        .result-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .tag.visa {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .tag.risk-low {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .tag.risk-medium {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .tag.risk-high {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid rgba(59, 130, 246, 0.2);
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Tourism</h1>
+            <p>Подбери идеальное направление</p>
+        </div>
+
+        <div class="glass-card">
+            <form id="searchForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Бюджет ($)</label>
+                        <input type="number" name="budget" placeholder="1500" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Сезон</label>
+                        <select name="season">
+                            <option value="">Любой</option>
+                            <option value="winter">Зима</option>
+                            <option value="spring">Весна</option>
+                            <option value="summer">Лето</option>
+                            <option value="autumn">Осень</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Климат</label>
+                        <select name="climate">
+                            <option value="">Любой</option>
+                            <option value="warm">Тёплый</option>
+                            <option value="temperate">Умеренный</option>
+                            <option value="cold">Холодный</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Тип отдыха</label>
+                        <select name="travel_type">
+                            <option value="">Любой</option>
+                            <option value="beach">Пляжный</option>
+                            <option value="city">Городской</option>
+                            <option value="mountains">Горный</option>
+                            <option value="adventure">Приключения</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>С детьми</label>
+                        <select name="with_children">
+                            <option value="">Без разницы</option>
+                            <option value="true">Да</option>
+                            <option value="false">Нет</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Безопасность</label>
+                        <select name="safety_priority">
+                            <option value="">Любая</option>
+                            <option value="high">Высокая</option>
+                            <option value="medium">Средняя</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="free-text">
+                    <label class="free-text-label">Или просто опиши словами</label>
+                    <textarea name="free_text" placeholder="Хочу тепло, без визы, бюджет 1500, не опасно"></textarea>
+                </div>
+
+                <button type="submit" class="btn">Найти направления</button>
+            </form>
+
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('searchForm');
+        const resultsDiv = document.getElementById('results');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const data = {};
+            
+            for (let [key, value] of formData.entries()) {
+                if (value) {
+                    if (value === 'true') data[key] = true;
+                    else if (value === 'false') data[key] = false;
+                    else data[key] = value;
+                }
+            }
+
+            resultsDiv.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Ищем лучшие направления...</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch('/search', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.results && result.results.length > 0) {
+                    let html = '<div class="results"><div class="results-header">Найдено направлений: ' + result.count + '</div>';
+                    
+                    result.results.forEach(country => {
+                        const riskClass = country.risk_level === 'low' ? 'risk-low' : 
+                                         country.risk_level === 'medium' ? 'risk-medium' : 'risk-high';
+                        
+                        html += `
+                            <div class="result-card">
+                                <div class="result-top">
+                                    <span class="result-country">${country.country}</span>
+                                    <span class="result-price">$${country.avg_price}</span>
+                                </div>
+                                <div class="result-tags">
+                                    <span class="tag">${country.travel_type.join(', ')}</span>
+                                    <span class="tag">${country.climate}</span>
+                                    ${!country.visa_required ? '<span class="tag visa">Без визы</span>' : ''}
+                                    <span class="tag ${riskClass}">Риск: ${country.risk_level}</span>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    html += '</div>';
+                    resultsDiv.innerHTML = html;
+                } else {
+                    resultsDiv.innerHTML = '<div class="loading"><p>Направлений не найдено. Попробуйте изменить критерии.</p></div>';
+                }
+            } catch (error) {
+                resultsDiv.innerHTML = '<div class="loading"><p>Ошибка. Попробуйте позже.</p></div>';
+            }
+        });
+    </script>
+</body>
+</html>

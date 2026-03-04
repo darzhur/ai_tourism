@@ -1,0 +1,132 @@
+{
+  "Spain": {
+    "timestamp": "2026-03-04T20:35:59.672895",
+    "data": {
+      "country": "Spain",
+      "risk_score": 2,
+      "level": "low",
+      "reasons": [
+        "Новостей о серьёзных угрозах не найдено"
+      ],
+      "sources_checked": 2,
+      "checked_at": "2026-03-04T20:35:59.672857"
+    }
+  },
+  "Greece": {
+    "timestamp": "2026-03-04T20:50:01.446675",
+    "data": {
+      "country": "Greece",
+      "risk_score": 2,
+      "level": "low",
+      "reasons": [
+        "Новостей о серьёзных угрозах не найдено"
+      ],
+      "sources_checked": 2,
+      "checked_at": "2026-03-04T20:50:01.446656"
+    }
+  },
+  "Italy": {
+    "timestamp": "2026-03-04T20:50:05.332447",
+    "data": {
+      "country": "Italy",
+      "risk_score": 2,
+      "level": "low",
+      "reasons": [
+        "Новостей о серьёзных угрозах не найдено"
+      ],
+      "sources_checked": 2,
+      "checked_at": "2026-03-04T20:50:05.332429"
+    }
+  },
+  "France": {
+    "timestamp": "2026-03-04T20:50:10.100675",
+    "data": {
+      "country": "France",
+      "risk_score": 2,
+      "level": "low",
+      "reasons": [
+        "Новостей о серьёзных угрозах не найдено"
+      ],
+      "sources_checked": 2,
+      "checked_at": "2026-03-04T20:50:10.100649"
+    }
+  },
+  "Portugal": {
+    "timestamp": "2026-03-04T20:50:14.472904",
+    "data": {
+      "country": "Portugal",
+      "risk_score": 2,
+      "level": "low",
+      "reasons": [
+        "Новостей о серьёзных угрозах не найдено"
+      ],
+      "sources_checked": 2,
+      "checked_at": "2026-03-04T20:50:14.472843"
+    }
+  },
+  "Georgia": {
+    "timestamp": "2026-03-04T20:50:19.367617",
+    "data": {
+      "country": "Georgia",
+      "risk_score": 2,
+      "level": "low",
+      "reasons": [
+        "Новостей о серьёзных угрозах не найдено"
+      ],
+      "sources_checked": 2,
+      "checked_at": "2026-03-04T20:50:19.367597"
+    }
+  },
+  "UAE": {
+    "timestamp": "2026-03-04T20:50:24.284804",
+    "data": {
+      "country": "UAE",
+      "risk_score": 2,
+      "level": "low",
+      "reasons": [
+        "Новостей о серьёзных угрозах не найдено"
+      ],
+      "sources_checked": 2,
+      "checked_at": "2026-03-04T20:50:24.284788"
+    }
+  },
+  "Japan": {
+    "timestamp": "2026-03-04T20:50:28.049491",
+    "data": {
+      "country": "Japan",
+      "risk_score": 2,
+      "level": "low",
+      "reasons": [
+        "Новостей о серьёзных угрозах не найдено"
+      ],
+      "sources_checked": 2,
+      "checked_at": "2026-03-04T20:50:28.049467"
+    }
+  },
+  "Turkey": {
+    "timestamp": "2026-03-04T20:50:31.377332",
+    "data": {
+      "country": "Turkey",
+      "risk_score": 2,
+      "level": "low",
+      "reasons": [
+        "Новостей о серьёзных угрозах не найдено"
+      ],
+      "sources_checked": 2,
+      "checked_at": "2026-03-04T20:50:31.377316"
+    }
+  },
+  "Egypt": {
+    "timestamp": "2026-03-04T20:50:34.885260",
+    "data": {
+      "country": "Egypt",
+      "risk_score": 2,
+      "level": "low",
+      "reasons": [
+        "Новостей о серьёзных угрозах не найдено"
+      ],
+      "sources_checked": 2,
+      "checked_at": "2026-03-04T20:50:34.885239"
+    }
+  }
+}
